@@ -25,7 +25,7 @@ public class BookService implements BaseService<Book> {
 
 	@Transactional
 	@Override
-	public int save(Book book) {
+	public Book save(Book book) {
 		return bookDao.save(book);
 	}
 

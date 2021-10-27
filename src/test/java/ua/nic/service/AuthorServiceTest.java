@@ -16,7 +16,7 @@ public class AuthorServiceTest {
 
 	private static BaseService<Author> authorService;
 	private Author testAuthor;
-	private int num1,num2;
+	private int num1, num2;
 
 	@BeforeClass
 	public static void init() {
@@ -26,31 +26,32 @@ public class AuthorServiceTest {
 
 	@Test
 	public void testAllCrudOperation() {
+		int countBook = authorService.getAll().size();
 		testAuthor = new Author();
 		testAuthor.setBirth(LocalDateTime.now());
 		testAuthor.setCreatedDate(LocalDateTime.now());
 		testAuthor.setEmail("tytmavbytymail");
 		testAuthor.setFirstName("first");
 		testAuthor.setLastName("second");
-		num1 = authorService.save(testAuthor);
+		num1 = authorService.save(testAuthor).getId();
 		Assert.assertNotNull(num1);
 		testAuthor.setBirth(LocalDateTime.now());
 		testAuthor.setCreatedDate(LocalDateTime.now());
 		testAuthor.setEmail("tytmavbytymail2");
 		testAuthor.setFirstName("first2");
 		testAuthor.setLastName("second2");
-		num2 = authorService.save(testAuthor);
+		num2 = authorService.save(testAuthor).getId();
 		Assert.assertNotNull(num2);
 		Assert.assertNotNull(authorService.get(num1));
-		Assert.assertEquals(2,authorService.getAll().size());
+		Assert.assertEquals(countBook + 2, authorService.getAll().size());
 		testAuthor.setBirth(LocalDateTime.now());
 		testAuthor.setCreatedDate(LocalDateTime.now());
 		testAuthor.setEmail("tytmavbytymail3");
 		testAuthor.setFirstName("first3");
 		testAuthor.setLastName("second3");
-		authorService.update(num1,testAuthor);
-		Assert.assertEquals(authorService.get(num1).getFirstName(),"first3");
-		Assert.assertEquals(authorService.get(num1).getEmail(),"tytmavbytymail3");
+		authorService.update(num1, testAuthor);
+		Assert.assertEquals(authorService.get(num1).getFirstName(), "first3");
+		Assert.assertEquals(authorService.get(num1).getEmail(), "tytmavbytymail3");
 		authorService.delete(num1);
 		authorService.delete(num2);
 		Assert.assertNull(authorService.get(num1));

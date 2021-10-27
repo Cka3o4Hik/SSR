@@ -1,9 +1,11 @@
 package ua.nic.dao;
 
+import ua.nic.entity.Book;
+
 import java.util.List;
 
 public interface BaseDao<T> {
-	int save(T entity);
+	T save(T entity);
 
 	T get(int id);
 

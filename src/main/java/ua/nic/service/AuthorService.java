@@ -20,7 +20,7 @@ public class AuthorService implements BaseService<Author> {
 	}
 
 	@Override
-	public int save(Author author) {
+	public Author save(Author author) {
 		return authorDao.save(author);
 	}
 

@@ -23,9 +23,9 @@ public class BookDao implements BaseDao<Book> {
 	}
 
 	@Override
-	public int save(Book book) {
+	public Book save(Book book) {
 		sessionFactory.getCurrentSession().save(book);
-		return book.getId();
+		return book;
 	}
 
 	@Override

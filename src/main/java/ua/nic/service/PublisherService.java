@@ -23,7 +23,7 @@ public class PublisherService implements BaseService<Publisher> {
 
 
 	@Override
-	public int save(Publisher publisher) {
+	public Publisher save(Publisher publisher) {
 		return publisherDao.save(publisher);
 	}
 

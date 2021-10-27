@@ -14,7 +14,7 @@ public class BookServiceTest {
 
 	private static BaseService<Book> bookService;
 	private Book testBook;
-	private int num1,num2;
+	private int num1, num2;
 	@BeforeClass
 	public static void init() {
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -24,19 +24,20 @@ public class BookServiceTest {
 
 	@Test
 	public void testAllCrudOperation() {
+		int countBook = bookService.getAll().size();
 		testBook = new Book();
 		testBook.setCreatedDate(LocalDateTime.now());
 		testBook.setName("LOTR");
 		testBook.setIsbn(4578543);
-		num1 = bookService.save(testBook);
+		num1 = bookService.save(testBook).getId();
 		Assert.assertNotNull(num1);
 		testBook.setCreatedDate(LocalDateTime.now());
 		testBook.setName("LOTR");
 		testBook.setIsbn(457854323);
-		num2 = bookService.save(testBook);
+		num2 = bookService.save(testBook).getId();
 		Assert.assertNotNull(num2);
 		Assert.assertNotNull(bookService.get(1));
-		Assert.assertEquals(2,bookService.getAll().size());
+		Assert.assertEquals(countBook + 2, bookService.getAll().size());
 		testBook.setCreatedDate(LocalDateTime.now());
 		testBook.setName("LOTR3");
 		testBook.setIsbn(1324365768);

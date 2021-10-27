@@ -25,8 +25,7 @@ public class BookController {
 	@PostMapping("/book")
 	public ResponseEntity<?> save(@RequestBody Book book) {
 		System.out.println("the json value of book is :::::: " + book);
-		int id = bookService.save(book);
-		return ResponseEntity.ok().body("New Book has been saved with ID:" + id);
+		return ResponseEntity.ok().body(bookService.save(book));
 	}
 
 	/*---Get a book by id---*/

@@ -14,7 +14,7 @@ public class PublisherServiceTest {
 	private static BaseService<Publisher> publisherService;
 
 	private Publisher testPublisher;
-	private int num1,num2;
+	private int num1, num2;
 
 	@BeforeClass
 	public static void init() {
@@ -24,22 +24,23 @@ public class PublisherServiceTest {
 
 	@Test
 	public void testAllCrudOperation() {
+		int countBook = publisherService.getAll().size();
 		testPublisher = new Publisher();
 		testPublisher.setName("EKSMO");
 		testPublisher.setCity("Chernivtsi");
-		num1 = publisherService.save(testPublisher);
+		num1 = publisherService.save(testPublisher).getId();
 		Assert.assertNotNull(num1);
 		testPublisher.setName("AVTB");
 		testPublisher.setCity("Chernivtsi");
-		num2 = publisherService.save(testPublisher);
+		num2 = publisherService.save(testPublisher).getId();
 		Assert.assertNotNull(num2);
 		Assert.assertNotNull(publisherService.get(1));
-		Assert.assertEquals(2,publisherService.getAll().size());
+		Assert.assertEquals(countBook + 2, publisherService.getAll().size());
 		testPublisher.setName("EKSMOTest");
 		testPublisher.setCity("ChernivtsiTest");
-		publisherService.update(num1,testPublisher);
-		Assert.assertEquals(publisherService.get(num1).getName(),"EKSMOTest");
-		Assert.assertEquals(publisherService.get(num1).getCity(),"ChernivtsiTest");
+		publisherService.update(num1, testPublisher);
+		Assert.assertEquals(publisherService.get(num1).getName(), "EKSMOTest");
+		Assert.assertEquals(publisherService.get(num1).getCity(), "ChernivtsiTest");
 		publisherService.delete(num1);
 		publisherService.delete(num2);
 		Assert.assertNull(publisherService.get(num1));

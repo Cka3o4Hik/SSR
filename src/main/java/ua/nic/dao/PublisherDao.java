@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ua.nic.entity.Book;
 import ua.nic.entity.Publisher;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -23,9 +24,9 @@ public class PublisherDao implements BaseDao<Publisher> {
 	}
 
 	@Override
-	public int save(Publisher publisher) {
+	public Publisher save(Publisher publisher) {
 		sessionFactory.getCurrentSession().save(publisher);
-		return publisher.getId();
+		return publisher;
 	}
 
 	@Override

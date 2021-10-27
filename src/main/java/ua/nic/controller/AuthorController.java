@@ -13,10 +13,10 @@ import java.util.List;
 @RequestMapping("/api")
 public class AuthorController {
 
-	private BaseService authorService;
+	private BaseService<Author> authorService;
 
 	@Autowired
-	public AuthorController(BaseService authorService) {
+	public AuthorController(BaseService<Author> authorService) {
 		this.authorService = authorService;
 	}
 
@@ -24,14 +24,13 @@ public class AuthorController {
 	@PostMapping("/author")
 	public ResponseEntity save(@RequestBody Author author) {
 		System.out.println("the json value of book is :::::: " + author);
-		int id = authorService.save(author);
-		return ResponseEntity.ok().body("New Book has been saved with ID:" + id);
+		return ResponseEntity.ok().body(authorService.save(author));
 	}
 
 	/*---Get a author by id---*/
 	@GetMapping("/author/{id}")
 	public ResponseEntity<Author> get(@PathVariable("id") int id) {
-		Author authors = (Author) authorService.get(id);
+		Author authors = authorService.get(id);
 		return ResponseEntity.ok().body(authors);
 	}
 

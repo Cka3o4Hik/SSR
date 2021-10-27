@@ -25,8 +25,7 @@ public class PublisherController {
 	@PostMapping("/publisher")
 	public ResponseEntity<?> save(@RequestBody Publisher publisher) {
 		System.out.println("the json value of book is :::::: " + publisher);
-		int id = publisherService.save(publisher);
-		return ResponseEntity.ok().body("New Book has been saved with ID:" + id);
+		return ResponseEntity.ok().body(publisherService.save(publisher));
 	}
 
 	/*---Get a publisher by id---*/

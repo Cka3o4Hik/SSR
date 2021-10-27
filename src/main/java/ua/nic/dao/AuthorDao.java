@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ua.nic.entity.Author;
+import ua.nic.entity.Book;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -23,9 +24,9 @@ public class AuthorDao implements BaseDao<Author> {
 	}
 
 	@Override
-	public int save(Author author) {
+	public Author save(Author author) {
 		sessionFactory.getCurrentSession().save(author);
-		return author.getId();
+		return author;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package ua.nic.service;
 import java.util.List;
 
 public interface BaseService<T> {
-	int save(T entity);
+	T save(T entity);
 
 	T get(int id);
 
