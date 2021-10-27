@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BookService } from './book.service';
-import { Book } from './book';
-import { Router } from '@angular/router';
+import { book } from './book';
+import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
 import {Subscription} from "rxjs";
 
 
@@ -11,30 +11,27 @@ import {Subscription} from "rxjs";
     styleUrls: ['./bookList.component.css']
 })
 export class BookListComponent implements OnInit{
-    book = new Book();
-    statusMessage: string;
-    books: Book[];
-    constructor(private _bookService: BookService,
-                private _router: Router){
 
-      this.books = [];
-      this.statusMessage = "statusMessage"
-    }
+      statusMessage: string = "";
+      books: book[] = [];
+      constructor(private _bookService: BookService,
+        private _router: Router){
+      }
 
-    ngOnInit(): void {
-        console.log("calling ngOnInit()::::");
+      ngOnInit(): void {
+        console.info("calling ngOnInit()::::");
         this.getBooks();
-    }
+      }
 
-    getBooks(): Subscription {
-        console.log("Inside getBooks():::::")
-        return this._bookService.getAllBooks()
-            .subscribe((bookData) => this.books = bookData,
+      getBooks(): Subscription {
+        console.info("Inside getbooks():::::")
+        return this._bookService.getAllbooks()
+          .subscribe((bookData) => this.books = bookData,
             (error) =>{
-                console.log(error);
-                this.statusMessage = "Problem with service. Please try again later!";
+              console.error(error);
+              this.statusMessage = "Problem with service. Please try again later!";
             }
-        );
-        console.log("end of getBooks():::::");
+          );
+        console.log("end of getbooks():::::");
     }
 }

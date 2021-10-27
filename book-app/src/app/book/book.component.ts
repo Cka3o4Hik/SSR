@@ -1,7 +1,7 @@
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
 import {BookService} from './book.service';
-import {Book} from './book';
+import {book} from './book';
 
 @Component({
   selector: 'app-book',
@@ -10,40 +10,38 @@ import {Book} from './book';
 })
 export class BookComponent implements OnInit, OnChanges {
 
-  books: Book[];
-  statusMessage: string;
-  book = new Book();
+  books: book[] = [];
+  statusMessage: string = "";
+  book = new book();
 
   constructor(private _bookService: BookService,
               private _router: Router) {
-
-    this.books = [];
-    this.statusMessage = "statusMessage"
   }
 
   ngOnInit(): void {
     console.log("calling ngOnInit()::::");
-    this.getBooks();
+    this.getbooks();
   }
 
-  getBooks(): void {
-    console.log("Inside getBooks():::::")
-    this._bookService.getAllBooks()
+  getbooks(): void {
+    console.log("Inside getbooks():::::")
+    this._bookService.getAllbooks()
       .subscribe((bookData) => this.books = bookData,
         (error) => {
           console.log(error);
           this.statusMessage = "Problem with service. Please try again later!";
         }
       );
-    console.log("end of getBooks():::::");
+    console.log("end of getbooks():::::");
   }
 
   addBook(): void {
-    console.log("inside the addBook()::::::")
+    console.log('1 - ', this.book)
+    this._bookService.addBook(this.book).subscribe((data) => {
+      const d = JSON.parse(<string>data);
+      console.log(typeof (d));
 
-
-    console.log("end of addBook()::::");
-    //this._router.navigate(['/books']);
+    });
   }
 
   private reset() {
@@ -60,20 +58,21 @@ export class BookComponent implements OnInit, OnChanges {
     console.log("calling ngOnChanges()::::::::");
   }
 
-  deleteBook(bookId: string) {
-    console.log("Inside the deleteBook()::::Book id::::" + bookId);
+  deletebook(bookId: string) {
+    console.log("Inside the deletebook()::::book id::::" + bookId);
     this.reset();
-    console.log("end of deleteBook():::::::");
+    console.log("end of deletebook():::::::");
   }
 
-  getBook(bookId: string) {
-    console.log("Inside the updateBook()::::::Book id::::" + bookId);
-    this._bookService.getBookById(bookId)
+  getbook(bookId: string) {
+    console.log('1');
+    console.log("Inside the updatebook()::::::book id::::" + bookId);
+    this._bookService.getbookById(bookId)
       .subscribe((bookData) => {
         this.book = bookData;
-        this.getBooks();
+        this.getbooks();
       })
     this.reset();
-    console.log("end of updateBook()::::::");
+    console.log("end of updatebook()::::::");
   }
 }

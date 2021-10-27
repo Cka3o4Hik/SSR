@@ -1,0 +1,73 @@
+<div class="container">
+  <form class="form-horizontal">
+    <input type="hidden" [(ngModel)]="author.id" name="id"/>
+    <div class="form-group">
+      <label class="control-label col-sm-2">author birth</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="author.birth" name="name" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">author created Date</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="author.createdDate" name="author" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">author email</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="author.email" name="series" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">author first name</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="author.firstName" name="isbn" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">author last name</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="author.lastName" name="isbn" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <button type="submit" (click)="addAuthor()" class="btn btn-primary">Add author</button>
+      </div>
+    </div>
+  </form>
+  <div>
+    <table class="table table-striped table-bordered">
+      <tr style="background: lightblue;">
+        <th>ID</th>
+        <th>NAME</th>
+        <th>AUTHOR</th>
+        <th>SERIES</th>
+        <th>ISBN</th>
+        <th>ACTIONS</th>
+      </tr>
+      <tr *ngFor="let author of authors">
+        <td>{{author.id}}</td>
+        <td>{{author.birth}}</td>
+        <td>{{author.createdDate}}</td>
+        <td>{{author.email}}</td>
+        <td>{{author.firstName}}</td>
+        <td>{{author.lastName}}</td>
+        <td>
+          <button (click)="getAuthor(author.id)" class="btn btn-default btn-sm"><span
+            class="glyphicon glyphicon-edit"></span></button>
+          &nbsp;|&nbsp;
+          <button (click)="deleteAuthor(author.id)" class="btn btn-default btn-sm"><span
+            class="glyphicon glyphicon-trash"></span></button>
+        </td>
+      </tr>
+      <tr *ngIf="!authors">
+        <td colspan="3">Loading... Please wait....</td>
+      </tr>
+      <tr *ngIf="authors && authors.length == 0">
+        <td colspan="4">No records found!</td>
+      </tr>
+    </table>
+  </div>
+</div>

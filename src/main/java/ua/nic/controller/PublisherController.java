@@ -29,28 +29,28 @@ public class PublisherController {
 		return ResponseEntity.ok().body("New Book has been saved with ID:" + id);
 	}
 
-	/*---Get a author by id---*/
+	/*---Get a publisher by id---*/
 	@GetMapping("/publisher/{id}")
 	public ResponseEntity<Publisher> get(@PathVariable("id") int id) {
 		Publisher publishers = (Publisher) publisherService.get(id);
 		return ResponseEntity.ok().body(publishers);
 	}
 
-	/*---get all authors---*/
+	/*---get all publishers---*/
 	@GetMapping("/publisher")
 	public ResponseEntity<List<Publisher>> list() {
-		List<Publisher> authors = publisherService.getAll();
-		return ResponseEntity.ok().body(authors);
+		List<Publisher> publishers = publisherService.getAll();
+		return ResponseEntity.ok().body(publishers);
 	}
 
-	/*---Update a author by id---*/
+	/*---Update a publisher by id---*/
 	@PutMapping("/publisher/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Publisher publisher) {
 		publisherService.update(id, publisher);
 		return ResponseEntity.ok().body("Book has been updated successfully.");
 	}
 
-	/*---Delete a author by id---*/
+	/*---Delete a publisher by id---*/
 	@DeleteMapping("/publisher/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") int id) {
 		publisherService.delete(id);

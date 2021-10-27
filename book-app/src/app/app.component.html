@@ -1,15 +1,59 @@
-<div style="padding:5px">
-    <ul class="nav nav-tabs">
-        <li routerLinkActive="active">
-            <a routerLink="home">Home</a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="addBook">Add Book</a>
-        </li>
-        <li routerLinkActive="active">
-            <a routerLink="books">List of Books</a>
-        </li>
-    </ul>
-    <br/>
-    <router-outlet></router-outlet>
+<mat-toolbar class="nav">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+     <!-- <mat-icon (click)="sidenav.toggle()">menu</mat-icon>-->
+    </button>
+    <img src="/assets/image/ssrLogo.png" alt="ToolLogo" class="main_logo">
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/home'"> Home </a>
+      <a mat-button [routerLink]="'/addpublisher'"> Add publisher </a>
+      <a mat-button [routerLink]="'/publisher'"> List of publishers </a>
+      <a mat-button [routerLink]="'/addbook'"> Add book </a>
+      <a mat-button [routerLink]="'/book'"> Activities </a>
+      <a mat-button [routerLink]="'/addauthor'"> Add Author </a>
+      <a mat-button [routerLink]="'/author'"> List of Author </a>
+
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
+<mat-toolbar color = "black">
+  <span style="font-size: 12px;">created by NIC company</span>
+</mat-toolbar>
+<!--
+
+<div style="padding:5px">
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="active">
+      <a routerLink="home">Home</a>
+    </li>
+      <li routerLinkActive="dea">
+        <a routerLink="addpublisher">Add publisher</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="publisher">List of publishers</a>
+      </li>
+  </ul>
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="dea">
+      <a routerLink="addbook">Add book</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="book">List of books</a>
+    </li>
+  </ul>
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="dea">
+      <a routerLink="addbook">Add book</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="book">List of books</a>
+    </li>
+  </ul>
+  <br/>
+
+</div>
+-->

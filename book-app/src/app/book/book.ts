@@ -1,4 +1,4 @@
-export class Book {
+export class book {
   id: string;
   name: string;
   author: string;
@@ -6,10 +6,10 @@ export class Book {
   isbn: string;
 
   constructor() {
-    this.id = ""
+    this.id = "";
     this.name = ""
     this.author = ""
     this.series = ""
-    this.isbn = ""
+    this.isbn = "";
   }
 }

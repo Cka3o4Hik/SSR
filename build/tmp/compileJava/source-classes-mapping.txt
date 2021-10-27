@@ -2,42 +2,42 @@ ua/nic/dao/AuthorDao.java
  ua.nic.dao.AuthorDao
 ua/nic/util/serialization/custom/LocalDateTimeDeserializer.java
  ua.nic.util.serialization.custom.LocalDateTimeDeserializer
-ua/nic/entity/Book.java
- ua.nic.entity.Book
-ua/nic/controller/PublisherController.java
- ua.nic.controller.PublisherController
-ua/nic/controller/BookController.java
- ua.nic.controller.BookController
-ua/nic/service/BookService.java
- ua.nic.service.BookService
+ua/nic/config/WebConfig.java
+ ua.nic.config.WebConfig
+ua/nic/entity/Author.java
+ ua.nic.entity.Author
+ua/nic/controller/AuthorController.java
+ ua.nic.controller.AuthorController
+ua/nic/service/BaseService.java
+ ua.nic.service.BaseService
 ua/nic/util/serialization/custom/LocalDateTimeSerializer.java
  ua.nic.util.serialization.custom.LocalDateTimeSerializer
 ua/nic/service/AuthorService.java
  ua.nic.service.AuthorService
 ua/nic/Main.java
  ua.nic.Main
+ua/nic/dao/BaseDao.java
+ ua.nic.dao.BaseDao
+ua/nic/config/MyWebAppInitializer.java
+ ua.nic.config.MyWebAppInitializer
+ua/nic/util/serialization/Serializer.java
+ ua.nic.util.serialization.Serializer
+ ua.nic.util.serialization.Serializer$1
+ua/nic/config/AppConfig.java
+ ua.nic.config.AppConfig
+ua/nic/entity/Book.java
+ ua.nic.entity.Book
+ua/nic/dao/PublisherDao.java
+ ua.nic.dao.PublisherDao
+ua/nic/entity/Publisher.java
+ ua.nic.entity.Publisher
+ua/nic/controller/PublisherController.java
+ ua.nic.controller.PublisherController
+ua/nic/controller/BookController.java
+ ua.nic.controller.BookController
+ua/nic/service/BookService.java
+ ua.nic.service.BookService
 ua/nic/dao/BookDao.java
  ua.nic.dao.BookDao
 ua/nic/service/PublisherService.java
  ua.nic.service.PublisherService
-ua/nic/util/serialization/Serializer.java
- ua.nic.util.serialization.Serializer
- ua.nic.util.serialization.Serializer$1
-ua/nic/dao/PublisherDao.java
- ua.nic.dao.PublisherDao
-ua/nic/config/MyWebAppInitializer.java
- ua.nic.config.MyWebAppInitializer
-ua/nic/entity/Publisher.java
- ua.nic.entity.Publisher
-ua/nic/service/BaseService.java
- ua.nic.service.BaseService
-ua/nic/config/WebConfig.java
- ua.nic.config.WebConfig
-ua/nic/entity/Author.java
- ua.nic.entity.Author
-ua/nic/dao/BaseDao.java
- ua.nic.dao.BaseDao
-ua/nic/config/AppConfig.java
- ua.nic.config.AppConfig
-ua/nic/controller/AuthorController.java
- ua.nic.controller.AuthorController
