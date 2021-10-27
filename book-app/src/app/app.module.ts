@@ -21,6 +21,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -46,7 +48,9 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [BookService, PublisherService, AuthorService],
   bootstrap: [AppComponent]

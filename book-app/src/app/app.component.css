@@ -10,3 +10,18 @@
 .nav {
   background: #404040;
 }
+
+.nav_color{
+  color: white;
+}
+.header{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+

@@ -1,18 +1,19 @@
 <mat-toolbar class="nav">
-  <mat-toolbar-row>
+  <mat-toolbar-row class="nav_color">
     <button mat-icon-button>
      <!-- <mat-icon (click)="sidenav.toggle()">menu</mat-icon>-->
     </button>
-    <img src="/assets/image/ssrLogo.png" alt="ToolLogo" class="main_logo">
+    <a routerLink="/home">
+      <img src="/assets/image/ssrLogo.png" alt="ToolLogo" class="main_logo">
+    </a>
     <span class="menu-spacer"></span>
-    <div>
-      <a mat-button [routerLink]="'/home'"> Home </a>
-      <a mat-button [routerLink]="'/addpublisher'"> Add publisher </a>
-      <a mat-button [routerLink]="'/publisher'"> List of publishers </a>
-      <a mat-button [routerLink]="'/addbook'"> Add book </a>
-      <a mat-button [routerLink]="'/book'"> Activities </a>
-      <a mat-button [routerLink]="'/addauthor'"> Add Author </a>
-      <a mat-button [routerLink]="'/author'"> List of Author </a>
+    <div class="header">
+      <!--<a mat-button [routerLink]="'/addpublisher'"><mat-icon>library_add</mat-icon></a>-->
+      <a mat-button [routerLink]="'/publisher'"> Publishers </a>
+      <!--<a mat-button [routerLink]="'/addbook'"><mat-icon>library_add</mat-icon></a>-->
+      <a mat-button [routerLink]="'/book'"> Books </a>
+      <!--<a mat-button [routerLink]="'/addauthor'"><mat-icon>library_add</mat-icon></a>-->
+      <a mat-button [routerLink]="'/author'"> Authors </a>
 
     </div>
   </mat-toolbar-row>
@@ -20,7 +21,7 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
-<mat-toolbar color = "black">
+<mat-toolbar class="nav_color nav footer">
   <span style="font-size: 12px;">created by NIC company</span>
 </mat-toolbar>
 <!--
