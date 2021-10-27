@@ -1,8 +1,15 @@
-export class Book{
+export class Book {
   id: string;
-  title: string;
+  name: string;
   author: string;
-  constructor(){
+  series: string;
+  isbn: string;
 
+  constructor() {
+    this.id = ""
+    this.name = ""
+    this.author = ""
+    this.series = ""
+    this.isbn = ""
   }
 }

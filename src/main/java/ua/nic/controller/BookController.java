@@ -11,6 +11,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/api")
 public class BookController {
 
 	private BaseService bookService;
@@ -38,8 +39,7 @@ public class BookController {
 	/*---get all books---*/
 	@GetMapping("/book")
 	public ResponseEntity<List<Book>> list() {
-		List<Book> books = bookService.getAll();
-		return ResponseEntity.ok().body(books);
+		return ResponseEntity.ok(bookService.getAll());
 	}
 
 	/*---Update a book by id---*/
