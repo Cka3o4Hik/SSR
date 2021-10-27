@@ -1,15 +1,22 @@
+import {Publisher} from "../publisher/publisher";
+import {Author} from "../author/author";
+
 export class book {
   id: string;
+  createdDate: Date;
   name: string;
-  author: string;
+  author: Author;
   series: string;
-  isbn: string;
+  isbn: number;
+  publisher: Publisher;
 
   constructor() {
     this.id = "";
     this.name = ""
-    this.author = ""
+    this.author = new Author();
+    this.publisher = new Publisher();
     this.series = ""
-    this.isbn = "";
+    this.isbn = -1;
+    this.createdDate = new Date();
   }
 }

@@ -2,6 +2,8 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
 import {BookService} from './book.service';
 import {book} from './book';
+import {Author} from "../author/author";
+import {Publisher} from "../publisher/publisher";
 
 @Component({
   selector: 'app-book',
@@ -48,7 +50,8 @@ export class BookComponent implements OnInit, OnChanges {
     console.log("inside the reset():::::::");
     this.book.id = "0";
     this.book.name = "null";
-    this.book.author = "null";
+    this.book.author = new Author();
+    this.book.publisher = new Publisher();
     this.book.series = "null";
     this.book.isbn = "0";
     console.log("end of reset():::::::");

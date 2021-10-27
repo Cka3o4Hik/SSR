@@ -23,19 +23,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
-
-const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'book', component: BookListComponent},
-  {path: 'addbook', component: BookComponent},
-  {path: 'publisher', component: PublisherListComponent},
-  {path: 'addpublisher', component: PublisherComponent},
-  {path: 'author', component: AuthorListComponent},
-  {path: 'addauthor', component: AuthorComponent},
-  {path: '**', component: PageNotFoundComponent}
-];
-
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -43,14 +31,16 @@ const appRoutes: Routes = [
     PublisherComponent, PublisherListComponent, HomeComponent, PageNotFoundComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(appRoutes), BrowserAnimationsModule,
+    BrowserModule, HttpClientModule, FormsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
     MatIconModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   providers: [BookService, PublisherService, AuthorService],
   bootstrap: [AppComponent]
