@@ -9,7 +9,7 @@ import {Publisher} from './publisher';
   styleUrls: ['./publisher.component.css']
 })
 export class PublisherComponent implements OnInit, OnChanges {
-
+  displayedColumns: string[] = ['id', 'city', 'name'];
   publishers: Publisher[] = [];
   statusMessage: string = "";
   publisher = new Publisher();

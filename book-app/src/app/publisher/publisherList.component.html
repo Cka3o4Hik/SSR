@@ -43,15 +43,10 @@
   </table>
 
   <div class="bottom">
-    <mat-toolbar-row  class="table_footer">
-      <a mat-button [routerLink]="'/addpublisher'"
-         class="create-publisher">
-        <span class="create-publisher">
-          <mat-icon class="add-icon">library_add</mat-icon>
-          <th>Add publisher</th>
-        </span>
-      </a>
-    </mat-toolbar-row >
+    <div class="create">
+      <app-create-btn [text]="'Publisher'"
+                      [link]="'/addpublisher'"></app-create-btn>
+    </div>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                    showFirstLastButtons
                    aria-label="Select page of publishers">

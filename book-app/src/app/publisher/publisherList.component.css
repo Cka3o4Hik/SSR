@@ -19,6 +19,9 @@ table th {
 .bottom{
   display:flex;
 }
+.create {
+  width: 50%;
+}
 
 .mat-paginator {
   width: 50%;
@@ -34,3 +37,5 @@ table th {
   margin-right: 10px;
   font-size: 30px;
 }
+
+

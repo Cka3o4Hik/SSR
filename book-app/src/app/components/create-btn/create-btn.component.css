@@ -1,0 +1,18 @@
+
+.table_footer{
+  background: white;
+}
+.bottom{
+  display:flex;
+}
+
+.create-publisher {
+  display: flex;
+  align-items: center;
+  color: #404040;
+}
+
+.add-icon {
+  margin-right: 10px;
+  font-size: 30px;
+}

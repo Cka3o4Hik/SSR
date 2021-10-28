@@ -7,7 +7,7 @@ export class Author {
   email: string;
   firstName: string;
   lastName: string;
-  book:Book;
+  books:Book[];
 
 
   constructor() {
@@ -17,6 +17,7 @@ export class Author {
     this.email = ""
     this.firstName= "";
     this.lastName= "";
-    this.book = new Book();
+    this.books = [];
+
   }
 }

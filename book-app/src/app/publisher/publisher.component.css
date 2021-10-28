@@ -1,10 +1,44 @@
 td{
-    text-align: center;
+  text-align: center;
 }
 th{
-    text-align: center;
+  text-align: center;
 }
 
 table {
   width: 100%;
 }
+
+table th {
+  text-align: center;
+}
+.table_footer{
+  background: white;
+  width: 58%;
+}
+.bottom{
+  display:flex;
+}
+.create {
+  width: 50%;
+}
+
+.mat-paginator {
+  width: 100%;
+}
+
+.create-publisher {
+  display: flex;
+  align-items: center;
+  color: #404040;
+}
+
+.add-icon {
+  margin-right: 10px;
+  font-size: 30px;
+}
+.bottom{
+  display:flex;
+}
+
+

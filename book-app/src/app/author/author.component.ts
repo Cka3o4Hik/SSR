@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AuthorService} from './author.service';
 import {Author} from './author';
 import {Book} from "../book/book";
+import {noUndefined} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-author',
@@ -10,7 +11,7 @@ import {Book} from "../book/book";
   styleUrls: ['./author.component.css']
 })
 export class AuthorComponent implements OnInit, OnChanges {
-
+  displayedColumns: string[] = ['id', 'birth', 'createdDate','email','firstName','lastName', 'book'];
   authors: Author[] = [];
   statusMessage: string = "";
   author = new Author();
@@ -53,7 +54,7 @@ export class AuthorComponent implements OnInit, OnChanges {
     this.author.email = "null";
     this.author.firstName = "0";
     this.author.lastName = "0";
-    this.author.book= new Book();
+    this.author.books = [];
     console.log("end of reset():::::::");
   }
 

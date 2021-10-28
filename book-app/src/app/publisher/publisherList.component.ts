@@ -26,10 +26,10 @@ export class PublisherListComponent implements OnInit, AfterViewInit {
         this.getPublishers();
       }
 
-      // @ViewChild(MatPaginator) paginator: MatPaginator;
+      @ViewChild(MatPaginator) paginator: MatPaginator;
 
       ngAfterViewInit() {
-        // this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.paginator;
       }
 
       getPublishers(): Subscription {

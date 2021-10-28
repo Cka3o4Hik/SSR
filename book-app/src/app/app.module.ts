@@ -24,11 +24,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {AppRoutingModule} from "./app-routing.module";
+import { CreateBtnComponent } from './components/create-btn/create-btn.component';
 
 @NgModule({
   declarations: [
     AppComponent, BookComponent, BookListComponent, AuthorComponent, AuthorListComponent,
-    PublisherComponent, PublisherListComponent, HomeComponent, PageNotFoundComponent
+    PublisherComponent, PublisherListComponent, HomeComponent, PageNotFoundComponent, CreateBtnComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule,

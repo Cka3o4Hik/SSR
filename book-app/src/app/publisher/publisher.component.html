@@ -20,33 +20,34 @@
     </div>
   </form>
   <div>
-    <table class="table table-striped table-bordered">
-      <tr style="background: lightblue;">
-        <th>ID</th>
-        <th>NAME</th>
-        <th>AUTHOR</th>
-        <th>SERIES</th>
-        <th>ISBN</th>
-        <th>ACTIONS</th>
-      </tr>
-      <tr *ngFor="let publisher of publishers">
-        <td>{{publisher.id}}</td>
-        <td>{{publisher.city}}</td>
-        <td>{{publisher.name}}</td>
-        <td>
-          <button (click)="getPublisher(publisher.id)" class="btn btn-default btn-sm"><span
-            class="glyphicon glyphicon-edit"></span></button>
-          &nbsp;|&nbsp;
-          <button (click)="deletePublisher(publisher.id)" class="btn btn-default btn-sm"><span
-            class="glyphicon glyphicon-trash"></span></button>
-        </td>
-      </tr>
-      <tr *ngIf="!publishers">
-        <td colspan="3">Loading... Please wait....</td>
-      </tr>
-      <tr *ngIf="publishers && publishers.length == 0">
-        <td colspan="4">No records found!</td>
-      </tr>
-    </table>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="publishers">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let publisher"> {{publisher.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef> City </th>
+          <td mat-cell *matCellDef="let publisher"> {{publisher.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Publisher </th>
+          <td mat-cell *matCellDef="let publisher"> {{publisher.name}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+      <div class="bottom">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of publishers">
+        </mat-paginator>
+      </div>
   </div>
 </div>

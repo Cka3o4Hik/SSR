@@ -11,7 +11,7 @@ import {Publisher} from "../publisher/publisher";
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit, OnChanges {
-
+  displayedColumns: string[] = ['id', 'createdDate', 'isbn', 'name', 'series', 'author', 'publisher'];
   books: Book[] = [];
   statusMessage: string = "";
   book = new Book();

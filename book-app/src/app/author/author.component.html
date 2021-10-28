@@ -38,36 +38,54 @@
     </div>
   </form>
   <div>
-    <table class="table table-striped table-bordered">
-      <tr style="background: lightblue;">
-        <th>ID</th>
-        <th>NAME</th>
-        <th>AUTHOR</th>
-        <th>SERIES</th>
-        <th>ISBN</th>
-        <th>ACTIONS</th>
-      </tr>
-      <tr *ngFor="let author of authors">
-        <td>{{author.id}}</td>
-        <td>{{author.birth}}</td>
-        <td>{{author.createdDate}}</td>
-        <td>{{author.email}}</td>
-        <td>{{author.firstName}}</td>
-        <td>{{author.lastName}}</td>
-        <td>
-          <button (click)="getAuthor(author.id)" class="btn btn-default btn-sm"><span
-            class="glyphicon glyphicon-edit"></span></button>
-          &nbsp;|&nbsp;
-          <button (click)="deleteAuthor(author.id)" class="btn btn-default btn-sm"><span
-            class="glyphicon glyphicon-trash"></span></button>
-        </td>
-      </tr>
-      <tr *ngIf="!authors">
-        <td colspan="3">Loading... Please wait....</td>
-      </tr>
-      <tr *ngIf="authors && authors.length == 0">
-        <td colspan="4">No records found!</td>
-      </tr>
-    </table>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="authors">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let author"> {{author.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="birth">
+          <th mat-header-cell *matHeaderCellDef> birth </th>
+          <td mat-cell *matCellDef="let author"> {{author.birth}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell *matHeaderCellDef> createdDate </th>
+          <td mat-cell *matCellDef="let author"> {{author.createdDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let author"> {{author.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> firstName </th>
+          <td mat-cell *matCellDef="let author"> {{author.firstName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> lastName </th>
+          <td mat-cell *matCellDef="let author"> {{author.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="book">
+          <th mat-header-cell *matHeaderCellDef> Book </th>
+          <td mat-cell *matCellDef="let author"> {{author.book}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="bottom">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of publishers">
+        </mat-paginator>
+      </div>
+    </div>
   </div>
 </div>
