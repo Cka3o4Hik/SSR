@@ -1,6 +1,14 @@
 td{
-    text-align: center;
+  text-align: center;
 }
 th{
-    text-align: center;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+table th {
+  text-align: center;
 }

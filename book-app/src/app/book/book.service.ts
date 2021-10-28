@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Headers, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs';
-import {book} from './book';
+import {Book} from './book';
 import {HttpClient} from "@angular/common/http";
 
 @Injectable()
@@ -10,18 +10,18 @@ export class BookService {
   constructor(private _httpService: HttpClient) {
   }
 
-  getAllbooks() : Observable<book[]> {
+  getAllbooks() : Observable<Book[]> {
     console.log("inside the service getAllbooks():::::::");
-    return this._httpService.get<book[]>("http://localhost:8080/api/book");
+    return this._httpService.get<Book[]>("http://localhost:8080/api/book");
   }
 
-  getbookById(bookId: string): Observable<book> {
+  getbookById(bookId: string): Observable<Book> {
     console.log("Inside the getbookById() service::::::");
-    return this._httpService.jsonp<book>("http://localhost:8080/api/book/" + bookId,
+    return this._httpService.jsonp<Book>("http://localhost:8080/api/book/" + bookId,
       'callback');
   }
 
-  addBook(book: book) {
+  addBook(book: Book) {
     let body = JSON.parse(JSON.stringify(book));
     // let body = book;
     let headers = new Headers({'Content-Type': 'application/json'});

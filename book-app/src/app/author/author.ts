@@ -1,3 +1,5 @@
+import {Book} from "../book/book";
+
 export class Author {
   id: string;
   birth: string;
@@ -5,6 +7,8 @@ export class Author {
   email: string;
   firstName: string;
   lastName: string;
+  book:Book;
+
 
   constructor() {
     this.id = "";
@@ -13,5 +17,6 @@ export class Author {
     this.email = ""
     this.firstName= "";
     this.lastName= "";
+    this.book = new Book();
   }
 }

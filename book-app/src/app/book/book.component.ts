@@ -1,7 +1,7 @@
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
 import {BookService} from './book.service';
-import {book} from './book';
+import {Book} from './book';
 import {Author} from "../author/author";
 import {Publisher} from "../publisher/publisher";
 
@@ -12,9 +12,9 @@ import {Publisher} from "../publisher/publisher";
 })
 export class BookComponent implements OnInit, OnChanges {
 
-  books: book[] = [];
+  books: Book[] = [];
   statusMessage: string = "";
-  book = new book();
+  book = new Book();
 
   constructor(private _bookService: BookService,
               private _router: Router) {

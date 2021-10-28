@@ -12,6 +12,7 @@ import {Subscription} from "rxjs";
 })
 export class AuthorListComponent implements OnInit{
 
+      displayedColumns: string[] = ['id', 'birth', 'createdDate','email','firstName','lastName', 'book'];
       statusMessage: string = "";
       authors: Author[] = [];
       constructor(private _authorService: AuthorService,

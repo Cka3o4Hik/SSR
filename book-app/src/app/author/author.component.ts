@@ -2,6 +2,7 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthorService} from './author.service';
 import {Author} from './author';
+import {Book} from "../book/book";
 
 @Component({
   selector: 'app-author',
@@ -52,6 +53,7 @@ export class AuthorComponent implements OnInit, OnChanges {
     this.author.email = "null";
     this.author.firstName = "0";
     this.author.lastName = "0";
+    this.author.book= new Book();
     console.log("end of reset():::::::");
   }
 

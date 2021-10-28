@@ -23,5 +23,9 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  position: -ms-device-fixed;
+  left:0px;
+  bottom:0px;
+  height:8%;
 }
 

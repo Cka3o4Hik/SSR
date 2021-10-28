@@ -1,13 +1,13 @@
 import {Publisher} from "../publisher/publisher";
 import {Author} from "../author/author";
 
-export class book {
+export class Book {
   id: string;
   createdDate: Date;
   name: string;
-  author: Author;
   series: string;
   isbn: number;
+  author: Author;
   publisher: Publisher;
 
   constructor() {

@@ -1,19 +1,22 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, AfterViewInit, ViewChild} from '@angular/core';
 import { BookService } from './book.service';
-import { book } from './book';
+import {Book} from './book';
 import { Router, ActivatedRoute, ParamMap  } from '@angular/router';
 import {Subscription} from "rxjs";
-
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
     selector: 'book-list',
     templateUrl: './bookList.component.html',
     styleUrls: ['./bookList.component.css']
 })
-export class BookListComponent implements OnInit{
+export class BookListComponent implements OnInit, AfterViewInit{
 
+      displayedColumns: string[] = ['id', 'createdDate', 'isbn', 'name', 'series', 'author', 'publisher'];
       statusMessage: string = "";
-      books: book[] = [];
+      books: Book[] = [];
+      /*dataSource = new MatTableDataSource<Book>(this.books)*/
       constructor(private _bookService: BookService,
         private _router: Router){
       }
@@ -21,6 +24,11 @@ export class BookListComponent implements OnInit{
       ngOnInit(): void {
         console.info("calling ngOnInit()::::");
         this.getBooks();
+      }
+
+      /*@ViewChild(MatPaginator) paginator: MatPaginator;*/
+      ngAfterViewInit() {
+        /*this.dataSource.paginator = this.paginator;*/
       }
 
       getBooks(): Subscription {
