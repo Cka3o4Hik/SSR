@@ -25,6 +25,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {AppRoutingModule} from "./app-routing.module";
 import { CreateBtnComponent } from './components/create-btn/create-btn.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { CreateBtnComponent } from './components/create-btn/create-btn.component
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [BookService, PublisherService, AuthorService],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
-ua/nic/service/BookServiceTest.java
- ua.nic.service.BookServiceTest
-ua/nic/service/PublisherServiceTest.java
- ua.nic.service.PublisherServiceTest
 ua/nic/service/AuthorServiceTest.java
  ua.nic.service.AuthorServiceTest
+ua/nic/service/PublisherServiceTest.java
+ ua.nic.service.PublisherServiceTest
+ua/nic/service/BookServiceTest.java
+ ua.nic.service.BookServiceTest
