@@ -21,17 +21,13 @@ export class AuthorService {
       'callback');
   }
 
-  addAuthor(author: Author) {
-    let body = JSON.parse(JSON.stringify(author));
-    // let body = author;
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
+  saveAuthor(author: Author) {
     if (author.id) {
       console.log("Inside addauthor update service():::::::");
-      return this._httpService.put("http://localhost:8080/api/author/" + author.id, body);
+      return this._httpService.put("http://localhost:8080/api/author/" + author.id, author);
     } else {
       console.log("Inside addauthor add service():::::::");
-      return this._httpService.post("http://localhost:8080/api/author", body);
+      return this._httpService.post("http://localhost:8080/api/author", author);
     }
   }
   ///Gradle___ua_nic___SSR_1_0_SNAPSHOT_war

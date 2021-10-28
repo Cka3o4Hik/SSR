@@ -4,6 +4,7 @@ import {AuthorService} from './author.service';
 import {Author} from './author';
 import {Book} from "../book/book";
 import {noUndefined} from "@angular/compiler/src/util";
+import {Publisher} from "../publisher/publisher";
 
 @Component({
   selector: 'app-author',
@@ -39,10 +40,9 @@ export class AuthorComponent implements OnInit, OnChanges {
 
   addAuthor(): void {
     console.log('1 - ', this.author)
-    this._authorService.addAuthor(this.author).subscribe((data) => {
-      const d = JSON.parse(<string> data);
-      console.log(typeof (d));
-
+    this._authorService.saveAuthor(this.author).subscribe((data) => {
+      this.authors.push(<Author>data);
+      this.authors = this.authors.map((data) => data);
     });
   }
 
