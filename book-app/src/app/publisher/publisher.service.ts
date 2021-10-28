@@ -22,16 +22,16 @@ export class PublisherService {
   }
 
   addPublisher(publisher: Publisher) {
-    let body = JSON.parse(JSON.stringify(publisher));
+    // let body = JSON.parse(JSON.stringify(publisher));
     // let body = publisher;
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     if (publisher.id) {
       console.log("Inside addpublisher update service():::::::");
-      return this._httpService.put("http://localhost:8080/api/publisher/" + publisher.id, body);
+      return this._httpService.put("http://localhost:8080/api/publisher/" + publisher.id, publisher);
     } else {
       console.log("Inside addpublisher add service():::::::");
-      return this._httpService.post("http://localhost:8080/api/publisher", body);
+      return this._httpService.post("http://localhost:8080/api/publisher", publisher);
     }
   }
   ///Gradle___ua_nic___SSR_1_0_SNAPSHOT_war

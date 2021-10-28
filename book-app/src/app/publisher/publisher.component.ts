@@ -38,9 +38,11 @@ export class PublisherComponent implements OnInit, OnChanges {
   addPublisher(): void {
     console.log('1 - ', this.publisher)
     this._publisherService.addPublisher(this.publisher).subscribe((data) => {
-      const d = JSON.parse(<string>data);
-      console.log(typeof (d));
-
+      console.log("typeof (d)====================================");
+      console.log(data);
+      this.publishers.push(<Publisher>data);
+      this.publishers = this.publishers.map((data) => data);
+      console.log(this.publishers);
     });
   }
 

@@ -13,46 +13,46 @@ import java.util.List;
 @RequestMapping("/api")
 public class PublisherController {
 
-	private BaseService publisherService;
+    private BaseService publisherService;
 
-	@Autowired
-	public PublisherController(BaseService publisherService) {
-		this.publisherService = publisherService;
-	}
+    @Autowired
+    public PublisherController(BaseService publisherService) {
+        this.publisherService = publisherService;
+    }
 
 
-	/*---Add new publisher---*/
-	@PostMapping("/publisher")
-	public ResponseEntity<?> save(@RequestBody Publisher publisher) {
-		System.out.println("the json value of book is :::::: " + publisher);
-		return ResponseEntity.ok().body(publisherService.save(publisher));
-	}
+    /*---Add new publisher---*/
+    @PostMapping("/publisher")
+    public ResponseEntity<?> save(@RequestBody Publisher publisher) {
+        System.out.println("the json value of book is :::::: " + publisher);
+        return ResponseEntity.ok().body(publisherService.save(publisher));
+    }
 
-	/*---Get a publisher by id---*/
-	@GetMapping("/publisher/{id}")
-	public ResponseEntity<Publisher> get(@PathVariable("id") int id) {
-		Publisher publishers = (Publisher) publisherService.get(id);
-		return ResponseEntity.ok().body(publishers);
-	}
+    /*---Get a publisher by id---*/
+    @GetMapping("/publisher/{id}")
+    public ResponseEntity<Publisher> get(@PathVariable("id") int id) {
+        Publisher publishers = (Publisher) publisherService.get(id);
+        return ResponseEntity.ok().body(publishers);
+    }
 
-	/*---get all publishers---*/
-	@GetMapping("/publisher")
-	public ResponseEntity<List<Publisher>> list() {
-		List<Publisher> publishers = publisherService.getAll();
-		return ResponseEntity.ok().body(publishers);
-	}
+    /*---get all publishers---*/
+    @GetMapping("/publisher")
+    public ResponseEntity<List<Publisher>> list() {
+        List<Publisher> publishers = publisherService.getAll();
+        return ResponseEntity.ok().body(publishers);
+    }
 
-	/*---Update a publisher by id---*/
-	@PutMapping("/publisher/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Publisher publisher) {
-		publisherService.update(id, publisher);
-		return ResponseEntity.ok().body("Book has been updated successfully.");
-	}
+    /*---Update a publisher by id---*/
+    @PutMapping("/publisher/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Publisher publisher) {
+        publisherService.update(id, publisher);
+        return ResponseEntity.ok().body("Book has been updated successfully.");
+    }
 
-	/*---Delete a publisher by id---*/
-	@DeleteMapping("/publisher/{id}")
-	public ResponseEntity<?> delete(@PathVariable("id") int id) {
-		publisherService.delete(id);
-		return ResponseEntity.ok().body("Book has been deleted successfully.");
-	}
+    /*---Delete a publisher by id---*/
+    @DeleteMapping("/publisher/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        publisherService.delete(id);
+        return ResponseEntity.ok().body("Book has been deleted successfully.");
+    }
 }

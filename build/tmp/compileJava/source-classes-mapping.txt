@@ -25,8 +25,8 @@ ua/nic/dao/PublisherDao.java
  ua.nic.dao.PublisherDao
 ua/nic/controller/AuthorController.java
  ua.nic.controller.AuthorController
-ua/nic/controller/PublisherController.java
- ua.nic.controller.PublisherController
+ua/nic/service/PublisherService.java
+ ua.nic.service.PublisherService
 ua/nic/service/BaseService.java
  ua.nic.service.BaseService
 ua/nic/controller/BookController.java
@@ -39,5 +39,5 @@ ua/nic/dao/BaseDao.java
  ua.nic.dao.BaseDao
 ua/nic/dao/BookDao.java
  ua.nic.dao.BookDao
-ua/nic/service/PublisherService.java
- ua.nic.service.PublisherService
+ua/nic/controller/PublisherController.java
+ ua.nic.controller.PublisherController
