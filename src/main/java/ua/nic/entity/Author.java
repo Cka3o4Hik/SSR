@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.CreationTimestamp;
 import ua.nic.util.serialization.custom.LocalDateTimeDeserializer;
 import ua.nic.util.serialization.custom.LocalDateTimeSerializer;
 
@@ -68,6 +69,7 @@ public class Author {
 
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonDeserialize( using = LocalDateTimeDeserializer.class)
+	@CreationTimestamp
 	@Column(name = "created_date")
 	public LocalDateTime getCreatedDate() {
 		return createdDate;

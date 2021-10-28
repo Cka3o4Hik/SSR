@@ -2,6 +2,11 @@ package ua.nic.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.CreationTimestamp;
+import ua.nic.util.serialization.custom.LocalDateTimeDeserializer;
+import ua.nic.util.serialization.custom.LocalDateTimeSerializer;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -61,6 +66,11 @@ public class Book {
 		this.isbn = isbn;
 	}
 
+
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+
+	@CreationTimestamp
 	@Column(name = "created_date")
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
@@ -79,7 +89,7 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER,mappedBy = "books")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
 	public List<Author> getAuthors() {
 		return authors;
 	}
