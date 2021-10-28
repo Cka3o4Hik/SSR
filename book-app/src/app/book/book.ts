@@ -7,14 +7,14 @@ export class Book {
   name: string;
   series: string;
   isbn: number;
-  author: Author;
-  publisher: Publisher;
+  authors: Author[];
+  publisher: Publisher | null;
 
   constructor() {
     this.id = "";
     this.name = ""
-    this.author = new Author();
-    this.publisher = new Publisher();
+    this.authors = [];
+    this.publisher = null;
     this.series = ""
     this.isbn = -1;
     this.createdDate = new Date();

@@ -49,7 +49,7 @@ export class BookComponent implements OnInit, OnChanges {
     console.log("inside the reset():::::::");
     this.book.id = "0";
     this.book.name = "null";
-    this.book.author = new Author();
+    this.book.authors = [];
     this.book.publisher = new Publisher();
     this.book.series = "null";
     this.book.isbn = -1;
