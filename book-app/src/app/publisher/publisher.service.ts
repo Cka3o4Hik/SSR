@@ -21,11 +21,7 @@ export class PublisherService {
       'callback');
   }
 
-  addPublisher(publisher: Publisher) {
-    // let body = JSON.parse(JSON.stringify(publisher));
-    // let body = publisher;
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
+  savePublisher(publisher: Publisher) {
     if (publisher.id) {
       console.log("Inside addpublisher update service():::::::");
       return this._httpService.put("http://localhost:8080/api/publisher/" + publisher.id, publisher);

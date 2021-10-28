@@ -38,7 +38,7 @@ export class AuthorComponent implements OnInit, OnChanges {
     console.log("end of getauthors():::::");
   }
 
-  addAuthor(): void {
+  saveAuthor(): void {
     console.log('1 - ', this.author)
     this._authorService.saveAuthor(this.author).subscribe((data) => {
       this.authors.push(<Author>data);

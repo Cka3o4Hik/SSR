@@ -37,12 +37,11 @@ export class BookComponent implements OnInit, OnChanges {
     console.log("end of getbooks():::::");
   }
 
-  addBook(): void {
+  saveBook(): void {
     console.log('1 - ', this.book)
-    this._bookService.addBook(this.book).subscribe((data) => {
-      const d = JSON.parse(<string>data);
-      console.log(typeof (d));
-
+    this._bookService.saveBook(this.book).subscribe((data) => {
+      this.books.push(<Book>data);
+      this.books = this.books.map((data) => data);
     });
   }
 
