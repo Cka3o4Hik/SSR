@@ -69,7 +69,6 @@ public class Book {
 
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-
 	@CreationTimestamp
 	@Column(name = "created_date")
 	public LocalDateTime getCreatedDate() {
