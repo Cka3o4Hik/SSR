@@ -6,12 +6,12 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ua.nic.entity.Author;
-import ua.nic.entity.Book;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Repository
 public class AuthorDao implements BaseDao<Author> {
@@ -30,23 +30,23 @@ public class AuthorDao implements BaseDao<Author> {
 	}
 
 	@Override
-	public Author get(int id) {
+	public Author get(Long id) {
 		return sessionFactory.getCurrentSession().get(Author.class, id);
 	}
 
 	@Override
-	public List<Author> getAll() {
+	public Set<Author> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Author> cq = cb.createQuery(Author.class);
 		Root<Author> root = cq.from(Author.class);
 		cq.select(root);
 		Query<Author> query = session.createQuery(cq);
-		return query.getResultList();
+		return new HashSet<>(query.getResultList());
 	}
 
 	@Override
-	public void update(int id, Author author) {
+	public void update(Long id, Author author) {
 		Session session = sessionFactory.getCurrentSession();
 		Author author2 = session.byId(Author.class).load(id);
 		author2.setFirstName(author.getFirstName());
@@ -59,7 +59,7 @@ public class AuthorDao implements BaseDao<Author> {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		Session session = sessionFactory.getCurrentSession();
 		Author author = session.byId(Author.class).load(id);
 		session.delete(author);

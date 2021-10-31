@@ -6,7 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 public class Serializer<T> {
 
@@ -23,8 +23,8 @@ public class Serializer<T> {
         return objectMapper.readerFor(tClass).readValue(file);
     }
 
-    public List<T> deserialize(File file) throws IOException {
-        return objectMapper.readerFor(new TypeReference<List<T>>() {}).readValue(file);
+    public Set<T> deserialize(File file) throws IOException {
+        return objectMapper.readerFor(new TypeReference<Set<T>>() {}).readValue(file);
     }
 
     public T deserialize(String json, Class<T> tClass) throws IOException {

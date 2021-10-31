@@ -14,7 +14,7 @@ public class PublisherServiceTest {
 	private static BaseService<Publisher> publisherService;
 
 	private Publisher testPublisher;
-	private int num1, num2;
+	private Long num1, num2;
 
 	@BeforeClass
 	public static void init() {
@@ -34,7 +34,7 @@ public class PublisherServiceTest {
 		testPublisher.setCity("Chernivtsi");
 		num2 = publisherService.save(testPublisher).getId();
 		Assert.assertNotNull(num2);
-		Assert.assertNotNull(publisherService.get(1));
+		Assert.assertNotNull(publisherService.get(1l));
 		Assert.assertEquals(countBook + 2, publisherService.getAll().size());
 		testPublisher.setName("EKSMOTest");
 		testPublisher.setCity("ChernivtsiTest");

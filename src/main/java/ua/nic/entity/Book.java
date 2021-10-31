@@ -9,9 +9,11 @@ import ua.nic.util.serialization.custom.LocalDateTimeDeserializer;
 import ua.nic.util.serialization.custom.LocalDateTimeSerializer;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -19,23 +21,23 @@ import java.util.Objects;
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id"
 )
-public class Book {
-	private int id;
+public class Book implements Serializable {
+	private Long id;
 	private String name;
 	private String series;
-	private int isbn;
+	private Long isbn;
 
 	private LocalDateTime createdDate;
 	private Publisher publisher;
-	private List<Author> authors;
+	private Set<Author> authors;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -58,11 +60,11 @@ public class Book {
 	}
 
 	@Column(name = "isbn")
-	public int getIsbn() {
+	public Long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(Long isbn) {
 		this.isbn = isbn;
 	}
 
@@ -88,12 +90,12 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
-	public List<Author> getAuthors() {
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
+	public Set<Author> getAuthors() {
 		return authors;
 	}
 
-	public void setAuthors(List<Author> authors) {
+	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
 	}
 
@@ -102,7 +104,7 @@ public class Book {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Book book = (Book) o;
-		return id == book.id && isbn == book.isbn && Objects.equals(name, book.name) && Objects.equals(series, book.series) && Objects.equals(createdDate, book.createdDate) && Objects.equals(publisher, book.publisher) && Objects.equals(authors, book.authors);
+		return Objects.equals(id, book.id) && Objects.equals(name, book.name) && Objects.equals(series, book.series) && Objects.equals(isbn, book.isbn) && Objects.equals(createdDate, book.createdDate) && Objects.equals(publisher, book.publisher) && Objects.equals(authors, book.authors);
 	}
 
 	@Override

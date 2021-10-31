@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ua.nic.entity.Author;
 import ua.nic.service.BaseService;
 
-import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -22,35 +22,35 @@ public class AuthorController {
 
 	/*---Add new author---*/
 	@PostMapping("/author")
-	public ResponseEntity save(@RequestBody Author author) {
+	public ResponseEntity<Author> save(@RequestBody Author author) {
 		System.out.println("the json value of book is :::::: " + author);
 		return ResponseEntity.ok().body(authorService.save(author));
 	}
 
 	/*---Get a author by id---*/
 	@GetMapping("/author/{id}")
-	public ResponseEntity<Author> get(@PathVariable("id") int id) {
+	public ResponseEntity<Author> get(@PathVariable("id") Long id) {
 		Author authors = authorService.get(id);
 		return ResponseEntity.ok().body(authors);
 	}
 
 	/*---get all authors---*/
 	@GetMapping("/author")
-	public ResponseEntity<List<Author>> list() {
-		List<Author> authors = authorService.getAll();
+	public ResponseEntity<Set<Author>> list() {
+		Set<Author> authors = authorService.getAll();
 		return ResponseEntity.ok().body(authors);
 	}
 
 	/*---Update a author by id---*/
 	@PutMapping("/author/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Author author) {
+	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Author author) {
 		authorService.update(id, author);
 		return ResponseEntity.ok().body("Book has been updated successfully.");
 	}
 
 	/*---Delete a author by id---*/
 	@DeleteMapping("/author/{id}")
-	public ResponseEntity<?> delete(@PathVariable("id") int id) {
+	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		authorService.delete(id);
 		return ResponseEntity.ok().body("Book has been deleted successfully.");
 	}

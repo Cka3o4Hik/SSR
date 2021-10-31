@@ -1,19 +1,19 @@
 package ua.nic.entity;
 
 import javax.persistence.*;
-
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "publishers")
-public class Publisher {
-	private int id;
+public class Publisher implements Serializable {
+	private Long id;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "city")
 	private String city;
 
-	public Publisher(int id, String name, String city) {
+	public Publisher(Long id, String name, String city) {
 		this.id = id;
 		this.name = name;
 		this.city = city;
@@ -24,11 +24,11 @@ public class Publisher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,7 +53,7 @@ public class Publisher {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Publisher publisher = (Publisher) o;
-		return id == publisher.id && Objects.equals(name, publisher.name) && Objects.equals(city, publisher.city);
+		return Objects.equals(id, publisher.id) && Objects.equals(name, publisher.name) && Objects.equals(city, publisher.city);
 	}
 
 	@Override
@@ -69,5 +69,4 @@ public class Publisher {
 				", city='" + city + '\'' +
 				'}';
 	}
-
 }

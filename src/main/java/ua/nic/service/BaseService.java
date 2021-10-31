@@ -1,16 +1,16 @@
 package ua.nic.service;
 
-import java.util.List;
+import java.util.Set;
 
 public interface BaseService<T> {
 	T save(T entity);
 
-	T get(int id);
+	T get(Long id);
 
-	List<T> getAll();
+	Set<T> getAll();
 
-	void update(int id, T entity);
+	void update(Long id, T entity);
 
-	void delete(int id);
+	void delete(Long id);
 
 }

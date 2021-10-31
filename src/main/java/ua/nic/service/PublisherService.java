@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.nic.dao.BaseDao;
 import ua.nic.entity.Publisher;
 
-import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -28,22 +28,22 @@ public class PublisherService implements BaseService<Publisher> {
 	}
 
 	@Override
-	public Publisher get(int id) {
+	public Publisher get(Long id) {
 		return publisherDao.get(id);
 	}
 
 	@Override
-	public List<Publisher> getAll() {
+	public Set<Publisher> getAll() {
 		return publisherDao.getAll();
 	}
 
 	@Override
-	public void update(int id, Publisher publisher) {
+	public void update(Long id, Publisher publisher) {
 		publisherDao.update(id, publisher);
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		publisherDao.delete(id);
 	}
 }

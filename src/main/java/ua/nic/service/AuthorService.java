@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.nic.entity.Author;
 import ua.nic.dao.AuthorDao;
 
-import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -25,22 +25,22 @@ public class AuthorService implements BaseService<Author> {
 	}
 
 	@Override
-	public Author get(int id) {
+	public Author get(Long id) {
 		return authorDao.get(id);
 	}
 
 	@Override
-	public List<Author> getAll() {
+	public Set<Author> getAll() {
 		return authorDao.getAll();
 	}
 
 	@Override
-	public void update(int id, Author author) {
+	public void update(Long id, Author author) {
 		authorDao.update(id, author);
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		authorDao.delete(id);
 	}
 }

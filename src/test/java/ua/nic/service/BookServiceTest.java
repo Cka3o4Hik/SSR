@@ -14,7 +14,7 @@ public class BookServiceTest {
 
 	private static BaseService<Book> bookService;
 	private Book testBook;
-	private int num1, num2;
+	private Long num1, num2;
 	@BeforeClass
 	public static void init() {
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -28,22 +28,22 @@ public class BookServiceTest {
 		testBook = new Book();
 		testBook.setCreatedDate(LocalDateTime.now());
 		testBook.setName("LOTR");
-		testBook.setIsbn(4578543);
+		testBook.setIsbn(4578543L);
 		num1 = bookService.save(testBook).getId();
 		Assert.assertNotNull(num1);
 		testBook.setCreatedDate(LocalDateTime.now());
 		testBook.setName("LOTR");
-		testBook.setIsbn(457854323);
+		testBook.setIsbn(457854323L);
 		num2 = bookService.save(testBook).getId();
 		Assert.assertNotNull(num2);
-		Assert.assertNotNull(bookService.get(1));
+		Assert.assertNotNull(bookService.get(1L));
 		Assert.assertEquals(countBook + 2, bookService.getAll().size());
 		testBook.setCreatedDate(LocalDateTime.now());
 		testBook.setName("LOTR3");
-		testBook.setIsbn(1324365768);
+		testBook.setIsbn(1324365768L);
 		bookService.update(num1,testBook);
 		Assert.assertEquals(bookService.get(num1).getName(),"LOTR3");
-		Assert.assertEquals(bookService.get(num1).getIsbn(),1324365768);
+		Assert.assertEquals((long) bookService.get(num1).getIsbn(), 1324365768L);
 		bookService.delete(num1);
 		bookService.delete(num2);
 		Assert.assertNull(bookService.get(num1));

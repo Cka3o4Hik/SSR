@@ -10,7 +10,8 @@ import ua.nic.entity.Book;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Repository
 public class BookDao implements BaseDao<Book> {
@@ -29,23 +30,23 @@ public class BookDao implements BaseDao<Book> {
 	}
 
 	@Override
-	public Book get(int id) {
+	public Book get(Long id) {
 		return sessionFactory.getCurrentSession().get(Book.class, id);
 	}
 
 	@Override
-	public List<Book> getAll() {
+	public Set<Book> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Book> cq = cb.createQuery(Book.class);
 		Root<Book> root = cq.from(Book.class);
 		cq.select(root);
 		Query<Book> query = session.createQuery(cq);
-		return query.getResultList();
+		return new HashSet<>(query.getResultList());
 	}
 
 	@Override
-	public void update(int id, Book book) {
+	public void update(Long id, Book book) {
 		Session session = sessionFactory.getCurrentSession();
 		Book book2 = session.byId(Book.class).load(id);
 		book2.setName(book.getName());
@@ -57,7 +58,7 @@ public class BookDao implements BaseDao<Book> {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		Session session = sessionFactory.getCurrentSession();
 		Book book = session.byId(Book.class).load(id);
 		session.delete(book);

@@ -16,7 +16,7 @@ public class AuthorServiceTest {
 
 	private static BaseService<Author> authorService;
 	private Author testAuthor;
-	private int num1, num2;
+	private Long num1, num2;
 
 	@BeforeClass
 	public static void init() {

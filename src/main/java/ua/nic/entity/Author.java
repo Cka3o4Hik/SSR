@@ -10,9 +10,11 @@ import ua.nic.util.serialization.custom.LocalDateTimeDeserializer;
 import ua.nic.util.serialization.custom.LocalDateTimeSerializer;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "authors")
@@ -20,23 +22,23 @@ import java.util.Objects;
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id"
 )
-public class Author {
-	private int id;
+public class Author implements Serializable {
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private LocalDateTime birth;
 	private LocalDateTime createdDate;
 	private String email;
 
-	private List<Book> books;
+	private Set<Book> books;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -88,17 +90,17 @@ public class Author {
 		this.email = email;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinTable(
 			name = "books_authors",
 			joinColumns = { @JoinColumn(name = "author_id") },
 			inverseJoinColumns = { @JoinColumn(name = "books_id") }
 	)
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
 
@@ -107,12 +109,12 @@ public class Author {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Author author = (Author) o;
-		return id == author.id && firstName.equals(author.firstName) && lastName.equals(author.lastName) && birth.equals(author.birth) && email.equals(author.email);
+		return Objects.equals(id, author.id) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName) && Objects.equals(birth, author.birth) && Objects.equals(createdDate, author.createdDate) && Objects.equals(email, author.email) && Objects.equals(books, author.books);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, firstName, lastName, birth, email);
+		return Objects.hash(id, firstName, lastName, birth, createdDate, email, books);
 	}
 
 	@Override

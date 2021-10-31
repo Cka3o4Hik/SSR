@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.nic.entity.Book;
 import ua.nic.dao.BookDao;
 
-import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -30,24 +30,24 @@ public class BookService implements BaseService<Book> {
 	}
 
 	@Override
-	public Book get(int id) {
+	public Book get(Long id) {
 		return bookDao.get(id);
 	}
 
 	@Override
-	public List<Book> getAll() {
+	public Set<Book> getAll() {
 		return bookDao.getAll();
 	}
 
 	@Transactional
 	@Override
-	public void update(int id, Book book) {
+	public void update(Long id, Book book) {
 		bookDao.update(id, book);
 	}
 
 	@Transactional
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		bookDao.delete(id);
 	}
 }

@@ -5,13 +5,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ua.nic.entity.Book;
 import ua.nic.entity.Publisher;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Repository
 public class PublisherDao implements BaseDao<Publisher> {
@@ -30,23 +30,23 @@ public class PublisherDao implements BaseDao<Publisher> {
 	}
 
 	@Override
-	public Publisher get(int id) {
+	public Publisher get(Long id) {
 		return sessionFactory.getCurrentSession().get(Publisher.class, id);
 	}
 
 	@Override
-	public List<Publisher> getAll() {
+	public Set<Publisher> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Publisher> cq = cb.createQuery(Publisher.class);
 		Root<Publisher> root = cq.from(Publisher.class);
 		cq.select(root);
 		Query<Publisher> query = session.createQuery(cq);
-		return query.getResultList();
+		return new HashSet<>(query.getResultList());
 	}
 
 	@Override
-	public void update(int id, Publisher publisher) {
+	public void update(Long id, Publisher publisher) {
 		Session session = sessionFactory.getCurrentSession();
 		Publisher publisher2 = session.byId(Publisher.class).load(id);
 		publisher2.setName(publisher.getName());
@@ -55,7 +55,7 @@ public class PublisherDao implements BaseDao<Publisher> {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		Session session = sessionFactory.getCurrentSession();
 		Publisher publisher = session.byId(Publisher.class).load(id);
 		session.delete(publisher);
